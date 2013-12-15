@@ -16,9 +16,11 @@ echo $contact->getData('name');
 //Should print:
 // John Doe
 
-$contact->setData('name', 'John Walker')->save(); //Should run an UPDATE query
+$contact->setData('name', 'John Walker');
+$contact->save(); //Should run an UPDATE query
 echo '<br/><br/>';
-print_r($contact->load(1)->getData());
+$contact->load(1);
+print_r($contact->getData());
 //Should print
 // id => 1,
 // name => John Walker
@@ -28,9 +30,11 @@ $contact->setData(array(
 "id" => 1,
 "name" => "John Doe the 2nd",
 "email" => "john@doe2.com"
-))->save();
+));
+$contact->save();
 echo '<br/><br/>';
-print_r($contact->load(1)->getData());
+$contact->load(1);
+print_r($contact->getData());
 //Should print
 // id => 1,
 // name => John Doe the 2nd
@@ -49,5 +53,4 @@ print_r($newContact->getData());
 // id => ? some auto increment number,
 // name => Gilbert Barber
 // email => gilbTheparrot@gmail.com
-
 $newContact->delete(); //Should delete him Gilbert Barber from the database
